@@ -1,5 +1,5 @@
 {% set name = "cuttools" %}
-{% set version = "1.9.3" %}
+{% set version = "2.0" %}
 
 package:
   name: {{ name }}
@@ -14,7 +14,7 @@ source:
       - build-only-cuttools-in-makefile.patch
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: {{ name }}-static
@@ -117,7 +117,7 @@ about:
       * G. Ossola, C. G. Papadopoulos and R. Pittau [Nucl. Phys. B 763 (2007) 147](https://doi.org/10.1016/j.nuclphysb.2006.11.012)
   license: MIT
   license_family: MIT
-  license_file: LICENSE.txt
+  license_file: source/LICENSE.txt
   dev_url: https://www.ugr.es/~pittau/CutTools/
   doc_url: https://www.ugr.es/~pittau/CutTools/
 
