@@ -14,7 +14,7 @@ source:
       - build-only-cuttools-in-makefile.patch
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - name: {{ name }}-static
@@ -22,9 +22,12 @@ outputs:
     build:
       skip: true  # [win]
       script:
+        # Enable extended-source with '-ffixed-line-length-none' for long lines
+        # c.f. https://gcc.gnu.org/onlinedocs/gfortran/Fortran-Dialect-Options.html#index-ffixed-line-length-n
+
         # Build
         - cd source
-        - make PRECISION=QP FC=$FC FFLAGS="$FFLAGS -std=legacy -fno-automatic -O2 -funroll-all-loops -I$PREFIX/include/mpfun90 -I$PREFIX/include/oneloop"
+        - make PRECISION=QP FC=$FC FFLAGS="$FFLAGS -std=legacy -fno-automatic -O2 -funroll-all-loops -ffixed-line-length-none -I$PREFIX/include/mpfun90 -I$PREFIX/include/oneloop"
 
         # Install
         # Avoid vendoring FF headers and .dat
